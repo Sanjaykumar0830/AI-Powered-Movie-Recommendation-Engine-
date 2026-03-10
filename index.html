@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMind - AI Movie Recommendations</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Cine<span>Mind</span></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#rate" class="nav-link">Rate Movies</a></li>
+                <li class="nav-item"><a href="#recommendations" class="nav-link">Recommendations</a></li>
+                <li class="nav-item"><a href="#watchlist" class="nav-link">Watchlist</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Discover Your Next Favorite Movie</h1>
+                <p class="hero-subtitle">AI-powered recommendations tailored just for you</p>
+                <button class="cta-button" onclick="showSection('rate')">Start Finding Your Movie Match</button>
+            </div>
+            <div class="hero-background"></div>
+        </div>
+    </section>
+
+    <!-- Rating Section -->
+    <section id="rate" class="section">
+        <div class="container">
+            <h2 class="section-title">Rate Movies You've Watched</h2>
+            <p class="section-subtitle">Help us understand your taste by rating these popular movies</p>
+            
+            <div class="rating-controls">
+                <div class="genre-filter">
+                    <button class="filter-btn active" data-genre="all">All Genres</button>
+                    <button class="filter-btn" data-genre="Action">Action</button>
+                    <button class="filter-btn" data-genre="Comedy">Comedy</button>
+                    <button class="filter-btn" data-genre="Drama">Drama</button>
+                    <button class="filter-btn" data-genre="Sci-Fi">Sci-Fi</button>
+                    <button class="filter-btn" data-genre="Thriller">Thriller</button>
+                </div>
+            </div>
+            
+            <div class="movies-grid" id="movies-to-rate">
+                <!-- Movies to rate will be loaded here -->
+            </div>
+            
+            <div class="actions">
+                <button class="primary-btn" id="get-recommendations">Get Recommendations</button>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section id="recommendations" class="section">
+        <div class="container">
+            <h2 class="section-title">Your Personalized Recommendations</h2>
+            <p class="section-subtitle">Based on your ratings and preferences</p>
+            
+            <div class="recommendations-controls">
+                <div class="sort-options">
+                    <select id="sort-by">
+                        <option value="match">Best Match</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="year">Newest First</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="movies-grid" id="recommended-movies">
+                <!-- Recommended movies will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Watchlist Section -->
+    <section id="watchlist" class="section">
+        <div class="container">
+            <h2 class="section-title">Your Watchlist</h2>
+            <p class="section-subtitle">Movies you've saved to watch later</p>
+            
+            <div class="movies-grid" id="watchlist-movies">
+                <!-- Watchlist movies will be loaded here -->
+            </div>
+            
+            <div id="empty-watchlist" class="empty-state">
+                <h3>Your watchlist is empty</h3>
+                <p>Add movies from recommendations to your watchlist</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Movie Details Modal -->
+    <div id="movie-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="movie-details">
+                <!-- Movie details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,646 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #e50914;
+    --primary-dark: #b2070f;
+    --dark: #141414;
+    --dark-light: #1f1f1f;
+    --gray: #303030;
+    --light: #ffffff;
+    --text: #e5e5e5;
+    --text-secondary: #a3a3a3;
+    --accent: #8b0000;
+    --success: #2ecc71;
+    --warning: #f39c12;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(20,20,20,0.9) 0%, rgba(20,20,20,0.7) 100%);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo h2 {
+    color: var(--light);
+    font-size: 1.8rem;
+}
+
+.nav-logo span {
+    color: var(--primary);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Sections */
+.section {
+    display: none;
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+.section.active {
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(20,20,20,0.9) 0%, rgba(139,0,0,0.7) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23141414" width="1200" height="800"/><path fill="%23e50914" d="M0,0 Q600,400 1200,0 L1200,800 L0,800 Z" opacity="0.1"/></svg>');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: var(--light);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    color: var(--text);
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+.cta-button {
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    color: var(--light);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease 0.4s both;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
+}
+
+/* Movies Grid */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.movie-card {
+    background: var(--dark-light);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-poster {
+    transform: scale(1.05);
+}
+
+.movie-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 220px;
+}
+
+/* Fixed cross-browser line clamping for movie titles */
+.movie-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--light);
+    line-height: 1.3;
+    
+    /* Cross-browser line limiting */
+    display: block;
+    max-height: 2.6em; /* Limits to approximately 2 lines */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Optional fade effect for visual polish */
+.movie-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 1.2em;
+    background: linear-gradient(90deg, transparent, var(--dark-light) 70%);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.movie-year {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.movie-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.genre-tag {
+    background: var(--gray);
+    color: var(--text);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px; /* This makes it rounded */
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    display: inline-block; /* Important for proper sizing */
+    line-height: 1.2;
+}
+
+.match-score {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    color: var(--light);
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Fixed button alignment */
+.movie-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto; /* Push to bottom */
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 0;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+.primary-btn {
+    background: var(--primary);
+    color: var(--light);
+    min-width: 80px;
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--gray);
+    min-width: 70px;
+}
+
+.primary-btn:hover {
+    background: var(--primary-dark);
+}
+
+.secondary-btn:hover {
+    background: var(--gray);
+}
+
+/* Rating Controls */
+.rating-controls {
+    margin-bottom: 2rem;
+}
+
+.genre-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.filter-btn {
+    background: var(--gray);
+    color: var(--text);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--primary);
+    color: var(--light);
+}
+
+.star-rating {
+    display: flex;
+    gap: 0.3rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.star {
+    font-size: 1.5rem;
+    color: var(--gray);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.star.active {
+    color: var(--warning);
+}
+
+/* Recommendations Controls */
+.recommendations-controls {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sort-options select {
+    background: var(--dark-light);
+    color: var(--text);
+    border: 1px solid var(--gray);
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-secondary);
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: var(--dark-light);
+    margin: 5% auto;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 15px;
+    overflow: hidden;
+    animation: modalSlideIn 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--text);
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--primary);
+}
+
+/* Fixed Modal Layout */
+.movie-detail-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+
+.movie-detail-header img {
+    width: 300px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.movie-detail-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.movie-detail-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--light);
+    line-height: 1.2;
+}
+
+.movie-detail-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.rating-badge {
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.watchlist-modal-btn {
+    padding: 0.5rem 1.5rem;
+    background: var(--primary);
+    color: var(--light);
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    max-width: 200px;
+}
+
+.watchlist-modal-btn:hover {
+    background: var(--primary-dark);
+}
+
+.movie-description {
+    line-height: 1.6;
+    color: var(--text);
+    margin-top: 1rem;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    text-align: center;
+    padding: 3rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .movies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .movie-detail-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .movie-detail-header img {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .movie-detail-title {
+        font-size: 2rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 2% auto;
+    }
+    
+    .movie-detail-meta {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .movies-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    .movie-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .primary-btn, .secondary-btn {
+        width: 100%;
+    }
+    
+    .movie-detail-header {
+        padding: 1rem;
+    }
+    
+    .movie-detail-title {
+        font-size: 1.5rem;
+    }
+}
